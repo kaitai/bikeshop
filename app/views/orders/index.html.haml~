@@ -5,6 +5,7 @@
     %th Customer name
     %th Customer email
     %th Description
+    %th Brand
     %th Price
     %th Paid for on
     %th Completed on

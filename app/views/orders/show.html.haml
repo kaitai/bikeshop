@@ -11,7 +11,7 @@
   = @order.description
 %p
   %b Brand:
-  = @order.brand.name
+  = @order.brand.name if @order.brand.present?
 %p
   %b Price:
   = @order.price
