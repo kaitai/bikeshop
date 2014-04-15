@@ -11,17 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140407234720) do
+ActiveRecord::Schema.define(version: 20140414204118) do
 
-  create_table "orders", force: true do |t|
-    t.string   "customer_name"
-    t.string   "customer_email"
-    t.string   "description"
-    t.float    "price"
-    t.date     "paid_for_on"
+  create_table "brands", force: true do |t|
+    t.text     "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.datetime "completed_on"
   end
+
+# Could not dump table "orders" because of following NoMethodError
+#   undefined method `[]' for nil:NilClass
 
 end

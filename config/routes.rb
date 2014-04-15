@@ -1,4 +1,6 @@
 Bikeshop::Application.routes.draw do
+  resources :brands
+
   get "homepage/show"
   resources :orders
 

@@ -8,4 +8,6 @@ class Order < ActiveRecord::Base
 	    errors.add(:completed_on, "Can't be before order")
          end
       end
+
+      belongs_to :brand
 end
