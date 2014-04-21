@@ -17,7 +17,7 @@
   = f.text_field :description
 .field
   = f.label :brand
-  = collection_select :order, :brand_id, @brands, :id, :name, prompt: 'select a brand!'
+  = collection_select :order, :frame_id, Brand.all, :id, :name, prompt: 'select a brand!'
 .field
   = f.label :price
   = f.text_field :price

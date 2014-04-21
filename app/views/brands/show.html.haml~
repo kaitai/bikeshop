@@ -4,12 +4,9 @@
   %b Name:
   = @brand.name
 
-%table 
-  %tr
-    %th Brand Orders
-  - @brand.orders.each do |order|
-    %tr
-      %td= order.customer_name
+%p
+  %b All such orders:
+  = @brand.orders
 
 = link_to 'Edit', edit_brand_path(@brand)
 \|

@@ -1,0 +1,4 @@
+class ChangeBrandsToFrames < ActiveRecord::Migration
+  def change
+  end
+end

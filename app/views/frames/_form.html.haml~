@@ -11,6 +11,6 @@
     = f.text_area :name
   .field
     = f.label :brand
-    = collection_select :frame, :brand_id, Brand.all, :id, :name, prompt: 'select a brand!'
+    = collection_select :order, :brand_id, Brand.all, :id, :name, prompt: 'select a brand!'
   .actions
     = f.submit 'Save'

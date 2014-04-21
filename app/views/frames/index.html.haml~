@@ -19,3 +19,4 @@
 %br
 
 = link_to 'New Frame', new_frame_path
+= link_to 'Homepage', root_path

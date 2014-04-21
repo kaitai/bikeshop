@@ -15,12 +15,12 @@ class OrdersController < ApplicationController
   # GET /orders/new
   def new
     @order = Order.new
-    @brands = Brand.all
+    @frames = Frame.all
   end
 
   # GET /orders/1/edit
   def edit
-    @brands = Brand.all
+
   end
 
   # POST /orders
@@ -71,6 +71,6 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:customer_name, :customer_email, :description, :price, :paid_for_on, :completed_on, :brand_id)
+      params.require(:order).permit(:customer_name, :customer_email, :description, :price, :paid_for_on, :completed_on, :frame_id)
     end
 end

@@ -6,6 +6,7 @@
     %th Customer email
     %th Description
     %th Brand
+    %th Frame
     %th Price
     %th Paid for on
     %th Completed on
@@ -17,7 +18,8 @@
       %td= order.customer_name
       %td= order.customer_email
       %td= order.description
-      %td= order.brand.name if order.brand.present?
+      %td= order.frame.brand.name if order.frame.present? && order.frame.brand.present?
+      %td= order.frame.name if order.frame.present?
       %td= order.price
       %td= order.paid_for_on
       %td= order.completed_on
