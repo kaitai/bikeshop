@@ -4,12 +4,12 @@
   %b Name:
   = @brand.name
 
-%table 
-  %tr
-    %th Brand Orders
-  - @brand.orders.each do |order|
-    %tr
-      %td= order.customer_name
+%p
+  %b Brand orders
+  - if @brand.paid_but_incomplete_orders.any?
+    %ul
+      - @brand.orders.each do |order|
+        %li= order.customer_name
 
 = link_to 'Edit', edit_brand_path(@brand)
 \|

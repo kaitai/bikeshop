@@ -17,9 +17,9 @@ class OrdersControllerTest < ActionController::TestCase
   end
 
   test "should create order" do
-    frame = FactoryGirl.create(:frame)
+    @frame = FactoryGirl.create(:frame)
     assert_difference('Order.count') do
-      post :create, order: { customer_email: @order.customer_email, customer_name: @order.customer_name, description: @order.description, paid_for_on: @order.paid_for_on, price: @order.price, frame_id: frame }
+      post :create, order: { customer_email: @order.customer_email, customer_name: @order.customer_name, description: @order.description, paid_for_on: @order.paid_for_on, price: @order.price, frame_id: @frame }
     end
 
     assert_redirected_to order_path(assigns(:order))

@@ -46,3 +46,7 @@ end
 
 # for class
 gem 'haml-rails'
+
+group :development, :test do
+  gem 'factory_girl_rails'
+end

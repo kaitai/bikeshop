@@ -5,8 +5,10 @@
   = @brand.name
 
 %p
-  %b All such orders:
-  = @brand.orders
+  %b Brand orders
+  %ul
+  - @brand.orders.each do |order|
+    %li= order.customer_name
 
 = link_to 'Edit', edit_brand_path(@brand)
 \|
