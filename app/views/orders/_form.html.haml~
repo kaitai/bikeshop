@@ -17,10 +17,11 @@
   = f.text_field :description
 .field
   = f.label :brand
-  = collection_select :order, :frame_id, Brand.all, :id, :name, prompt: 'select a brand!'
+  = collection_select :brand, :brand_id, Brand.all.order(:name), :id, :name, { }, { size: 10, data: { select: :brand } }
+.field
+  = f.label :frame
+  %select{id: :order_frame_id, size: 10, name: 'order[frame_id]', data: { select: :frame } }
+    %option Please select a frame
 .field
   = f.label :price
   = f.text_field :price
-.field
-  = f.label :paid_for_on
-  = f.date_select :paid_for_on

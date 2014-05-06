@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: [:show, :edit, :update, :destroy]
+  before_action :set_order, only: [:show, :edit, :update, :destroy, :mark_completed]
 
   # GET /orders
   # GET /orders.json
@@ -63,6 +63,18 @@ class OrdersController < ApplicationController
     end
   end
 
+  def mark_paid
+    @order.paid_for_on = DateTime.now
+    @order.save
+    redirect_to orders_path, notice: 'Order paid as of today'
+  end
+
+  def mark_completed
+    @order.completed_on = DateTime.now
+    @order.save
+    redirect_to orders_path, notice: 'Order completed as of today'
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_order
@@ -73,4 +85,5 @@ class OrdersController < ApplicationController
     def order_params
       params.require(:order).permit(:customer_name, :customer_email, :description, :price, :paid_for_on, :completed_on, :frame_id)
     end
+
 end

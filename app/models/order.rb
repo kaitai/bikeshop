@@ -1,5 +1,6 @@
 class Order < ActiveRecord::Base
       belongs_to :frame
+      has_one :brand, through: :frame
 
       validates :customer_name, presence: true
       validates :frame_id, presence: true
@@ -12,6 +13,10 @@ class Order < ActiveRecord::Base
          if completed_on.present? && completed_on < paid_for_on
 	    errors.add(:completed_on, "Can't be before order")
          end
+      end
+
+      def brand_id
+        brand ? brand.id : nil
       end
 
       def self.paid

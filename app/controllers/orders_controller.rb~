@@ -15,12 +15,12 @@ class OrdersController < ApplicationController
   # GET /orders/new
   def new
     @order = Order.new
-    @brands = Brand.all
+    @frames = Frame.all
   end
 
   # GET /orders/1/edit
   def edit
-    @brands = Brand.all
+
   end
 
   # POST /orders
@@ -63,6 +63,18 @@ class OrdersController < ApplicationController
     end
   end
 
+  def mark_paid
+    @order.paid_for_on = DateTime.now
+    @order.save
+    redirect_to orders_path, notice: 'Order paid as of today'
+  end
+
+  def mark_completed
+    @order.completed_on = DateTime.now
+    @order.save
+    redirect_to orders_path, notice: 'Order completed as of today'
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_order
@@ -71,6 +83,7 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:customer_name, :customer_email, :description, :price, :paid_for_on, :completed_on, :brand_id)
+      params.require(:order).permit(:customer_name, :customer_email, :description, :price, :paid_for_on, :completed_on, :frame_id)
     end
+
 end

@@ -8,9 +8,8 @@
     %th Brand
     %th Frame
     %th Price
-    %th Paid for on
-    %th Completed on
-    %th
+    %th.center Paid for on
+    %th.center Completed on
     %th
 
   - @orders.each do |order|
@@ -18,14 +17,24 @@
       %td= order.customer_name
       %td= order.customer_email
       %td= order.description
-  
+      %td= order.frame.brand.name if order.frame.present? && order.frame.brand.present?
       %td= order.frame.name if order.frame.present?
-      %td= order.price
-      %td= order.paid_for_on
-      %td= order.completed_on
-      %td= link_to 'Show', order
-      %td= link_to 'Edit', edit_order_path(order)
-      %td= link_to 'Destroy', order, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %td= number_to_currency(order.price)      
+      %td.center
+        - if order.completed_on.blank?
+          = link_to 'Mark Completed', mark_completed_order_path(order), method: :post, class: 'button'
+        - else
+          = order.completed_on.to_formatted_s(:short_date)
+      %td.center
+        - if order.paid_for_on.blank?
+          = link_to 'Mark Paid', mark_paid_order_path(order), method: :post, class: 'button'
+        - else
+          = order.paid_for_on.to_formatted_s(:short_date)
+      %td.actions
+        = link_to 'Show', order, class: 'button-small show'
+        = link_to 'Edit', edit_order_path(order), class: 'button-small edit'
+        = link_to 'Destroy', order, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'button-small delete'
+      %td
 
 %br
 

@@ -1,10 +1,21 @@
 Bikeshop::Application.routes.draw do
   resources :frames
 
-  resources :brands
+  resources :brands do
+    member do
+      get 'frames'
+    end
+  end
+
 
   get "homepage/show"
-  resources :orders
+  resources :orders do
+    member do
+      post 'mark_paid'
+      post 'mark_completed'
+    end
+  end
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
